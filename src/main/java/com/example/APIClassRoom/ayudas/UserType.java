@@ -1,6 +1,6 @@
 package com.example.APIClassRoom.ayudas;
 
-public enum TipoUsuario {
+public enum UserType {
 
     Estudiante,
     Docente,

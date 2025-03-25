@@ -1,15 +1,28 @@
 package com.example.APIClassRoom.modelos;
 
+import jakarta.persistence.*;
+
+@Entity
 public class Teacher {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idTeacher;
-    private String specialty;
+
+    @Column(nullable = false)
+    private String subject;
+
+    @OneToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "idUser")
+    private User user;
 
     public Teacher() {
     }
 
-    public Teacher(int idTeacher, String specialty) {
+    public Teacher(int idTeacher, String subject, User user) {
         this.idTeacher = idTeacher;
-        this.specialty = specialty;
+        this.subject = subject;
+        this.user = user;
     }
 
     public int getIdTeacher() {
@@ -20,12 +33,19 @@ public class Teacher {
         this.idTeacher = idTeacher;
     }
 
-    public String getSpecialty() {
-        return specialty;
+    public String getSubject() {
+        return subject;
     }
 
-    public void setSpecialty(String specialty) {
-        this.specialty = specialty;
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

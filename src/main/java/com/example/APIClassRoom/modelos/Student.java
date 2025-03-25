@@ -1,23 +1,31 @@
 package com.example.APIClassRoom.modelos;
 
-import java.time.LocalDate;
+import jakarta.persistence.*;
 
+@Entity
 public class Student {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idStudent;
-    private int grade;
-    private LocalDate birthday;
-    private String address;
+
+    @Column(nullable = false)
+    private String grade;
+
+    @OneToOne
+    @JoinColumn(name = "user_id", nullable = false, unique = true)
+    private User user;
 
     public Student() {
     }
 
-    public Student(int idStudent, int grade, LocalDate birthday, String address) {
+    public Student(int idStudent, String grade, User user) {
         this.idStudent = idStudent;
         this.grade = grade;
-        this.birthday = birthday;
-        this.address = address;
+        this.user = user;
     }
 
+    // Getters y Setters
     public int getIdStudent() {
         return idStudent;
     }
@@ -26,27 +34,19 @@ public class Student {
         this.idStudent = idStudent;
     }
 
-    public int getGrade() {
+    public String getGrade() {
         return grade;
     }
 
-    public void setGrade(int grade) {
+    public void setGrade(String grade) {
         this.grade = grade;
     }
 
-    public LocalDate getBirthday() {
-        return birthday;
+    public User getUser() {
+        return user;
     }
 
-    public void setBirthday(LocalDate birthday) {
-        this.birthday = birthday;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+    public void setUser(User user) {
+        this.user = user;
     }
 }

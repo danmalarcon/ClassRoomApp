@@ -1,17 +1,32 @@
 package com.example.APIClassRoom.modelos;
 
-import java.time.LocalDateTime;
+import jakarta.persistence.*;
 
+@Entity
 public class Registration {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idRegistration;
-    private LocalDateTime creationDate;
+
+    @ManyToOne
+    @JoinColumn(name = "student_id", nullable = false)
+    private Student student;
+
+    @ManyToOne
+    @JoinColumn(name = "course_id", nullable = false)
+    private Course course;
+
+    private String semester;
 
     public Registration() {
     }
 
-    public Registration(int idRegistration, LocalDateTime creationDate) {
+    public Registration(int idRegistration, Student student, Course course, String semester) {
         this.idRegistration = idRegistration;
-        this.creationDate = creationDate;
+        this.student = student;
+        this.course = course;
+        this.semester = semester;
     }
 
     public int getIdRegistration() {
@@ -22,11 +37,27 @@ public class Registration {
         this.idRegistration = idRegistration;
     }
 
-    public LocalDateTime getCreationDate() {
-        return creationDate;
+    public Student getStudent() {
+        return student;
     }
 
-    public void setCreationDate(LocalDateTime creationDate) {
-        this.creationDate = creationDate;
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+    public String getSemester() {
+        return semester;
+    }
+
+    public void setSemester(String semester) {
+        this.semester = semester;
     }
 }
