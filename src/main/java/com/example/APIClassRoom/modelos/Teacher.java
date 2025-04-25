@@ -7,7 +7,7 @@ public class Teacher {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idTeacher;
+    private Integer idTeacher;
 
     @Column(nullable = false)
     private String subject;
@@ -29,7 +29,7 @@ public class Teacher {
         return idTeacher;
     }
 
-    public void setIdTeacher(int idTeacher) {
+    public void setIdTeacher(Integer idTeacher) {
         this.idTeacher = idTeacher;
     }
 
