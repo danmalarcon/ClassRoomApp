@@ -7,7 +7,7 @@ public class Attendance {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idAttendance;
+    private Integer idAttendance;
 
     @ManyToOne
     @JoinColumn(name = "idStudent", nullable = false)
@@ -23,7 +23,7 @@ public class Attendance {
     public Attendance() {
     }
 
-    public Attendance(int idAttendance, Student student, Course course, boolean present) {
+    public Attendance(Integer idAttendance, Student student, Course course, boolean present) {
         this.idAttendance = idAttendance;
         this.student = student;
         this.course = course;
@@ -34,7 +34,7 @@ public class Attendance {
         return idAttendance;
     }
 
-    public void setIdAttendance(int idAttendance) {
+    public void setIdAttendance(Integer idAttendance) {
         this.idAttendance = idAttendance;
     }
 

@@ -4,9 +4,10 @@ import jakarta.persistence.*;
 
 @Entity
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idUser;
+    private Integer idUser;
 
     @Column(nullable = false)
     private String name;
@@ -24,7 +25,9 @@ public class User {
     private UserType userType;
 
     public enum UserType {
-        STUDENT, TEACHER, ADMIN
+        STUDENT,
+        TEACHER,
+        ADMIN
     }
 
     @OneToOne(mappedBy = "user")
@@ -36,7 +39,7 @@ public class User {
     public User() {
     }
 
-    public User(int idUser, String name, String email, String password, String phone, UserType userType) {
+    public User(Integer idUser, String name, String email, String password, String phone, UserType userType) {
         this.idUser = idUser;
         this.name = name;
         this.email = email;
@@ -45,12 +48,11 @@ public class User {
         this.userType = userType;
     }
 
-    // Getters y Setters
-    public int getIdUser() {
+    public Integer getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(int idUser) {
+    public void setIdUser(Integer idUser) {
         this.idUser = idUser;
     }
 

@@ -7,7 +7,7 @@ public class Course {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idCourse;
+    private Integer idCourse;
 
     @Column(nullable = false)
     private String name;
@@ -15,20 +15,25 @@ public class Course {
     @Column(nullable = false)
     private int credits;
 
+    @ManyToOne
+    @JoinColumn(name = "teacher_id", referencedColumnName = "idTeacher", nullable = false)
+    private Teacher teacher;
+
     public Course() {
     }
 
-    public Course(int idCourse, String name, int credits) {
+    public Course(Integer idCourse, String name, int credits, Teacher teacher) {
         this.idCourse = idCourse;
         this.name = name;
         this.credits = credits;
+        this.teacher = teacher;
     }
 
-    public int getIdCourse() {
+    public Integer getIdCourse() {
         return idCourse;
     }
 
-    public void setIdCourse(int idCourse) {
+    public void setIdCourse(Integer idCourse) {
         this.idCourse = idCourse;
     }
 
@@ -46,5 +51,13 @@ public class Course {
 
     public void setCredits(int credits) {
         this.credits = credits;
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
     }
 }

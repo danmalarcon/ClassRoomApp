@@ -1,39 +1,43 @@
 package com.example.APIClassRoom.modelos;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 public class Registration {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idRegistration;
+    private Integer idRegistration;
 
     @ManyToOne
-    @JoinColumn(name = "student_id", nullable = false)
+    @JoinColumn(name = "student_id", referencedColumnName = "idStudent", nullable = false)
     private Student student;
 
     @ManyToOne
-    @JoinColumn(name = "course_id", nullable = false)
+    @JoinColumn(name = "course_id", referencedColumnName = "idCourse", nullable = false)
     private Course course;
 
-    private String semester;
+    @Column(nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private LocalDateTime registrationDate;
 
     public Registration() {
+        // Se inicializa con la hora actual por defecto
+        this.registrationDate = LocalDateTime.now();
     }
 
-    public Registration(int idRegistration, Student student, Course course, String semester) {
+    public Registration(Integer idRegistration, Student student, Course course, LocalDateTime registrationDate) {
         this.idRegistration = idRegistration;
         this.student = student;
         this.course = course;
-        this.semester = semester;
+        this.registrationDate = registrationDate;
     }
 
-    public int getIdRegistration() {
+    public Integer getIdRegistration() {
         return idRegistration;
     }
 
-    public void setIdRegistration(int idRegistration) {
+    public void setIdRegistration(Integer idRegistration) {
         this.idRegistration = idRegistration;
     }
 
@@ -53,11 +57,11 @@ public class Registration {
         this.course = course;
     }
 
-    public String getSemester() {
-        return semester;
+    public LocalDateTime getRegistrationDate() {
+        return registrationDate;
     }
 
-    public void setSemester(String semester) {
-        this.semester = semester;
+    public void setRegistrationDate(LocalDateTime registrationDate) {
+        this.registrationDate = registrationDate;
     }
 }

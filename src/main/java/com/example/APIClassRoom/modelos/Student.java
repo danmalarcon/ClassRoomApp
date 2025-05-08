@@ -7,7 +7,7 @@ public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idStudent;
+    private Integer idStudent;
 
     @Column(nullable = false)
     private String grade;
@@ -19,18 +19,17 @@ public class Student {
     public Student() {
     }
 
-    public Student(int idStudent, String grade, User user) {
+    public Student(Integer idStudent, String grade, User user) {
         this.idStudent = idStudent;
         this.grade = grade;
         this.user = user;
     }
 
-    // Getters y Setters
-    public int getIdStudent() {
+    public Integer getIdStudent() {
         return idStudent;
     }
 
-    public void setIdStudent(int idStudent) {
+    public void setIdStudent(Integer idStudent) {
         this.idStudent = idStudent;
     }
 

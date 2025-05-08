@@ -14,18 +14,19 @@ public class Teacher {
 
     @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "idUser")
+
     private User user;
 
     public Teacher() {
     }
 
-    public Teacher(int idTeacher, String subject, User user) {
+    public Teacher(Integer idTeacher, String subject, User user) {
         this.idTeacher = idTeacher;
         this.subject = subject;
         this.user = user;
     }
 
-    public int getIdTeacher() {
+    public Integer getIdTeacher() {
         return idTeacher;
     }
 

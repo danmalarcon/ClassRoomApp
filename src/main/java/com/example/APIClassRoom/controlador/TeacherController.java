@@ -22,7 +22,7 @@ public class TeacherController {
             return ResponseEntity
                     .status(HttpStatus.CREATED).body(this.thService.saveTeacher(dataPostForClient));
         }catch (Exception e){
-            return ReponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
 
@@ -33,7 +33,7 @@ public class TeacherController {
             return ResponseEntity
                     .status(HttpStatus.OK).body(this.thService.modifyTeacher(id, date));
         }catch (Exception e){
-            return ReponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
 
@@ -44,7 +44,7 @@ public class TeacherController {
             return ResponseEntity
                     .status(HttpStatus.OK).body(this.thService.searchTeacherId(id));
         }catch (Exception e){
-            return ReponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
 
@@ -56,7 +56,7 @@ public class TeacherController {
             return ResponseEntity
                     .status(HttpStatus.OK).body(this.thService.searchAllTeacher());
         }catch (Exception e){
-            return ReponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
 
@@ -66,7 +66,7 @@ public class TeacherController {
             return ResponseEntity
                     .status(HttpStatus.OK).body(this.thService.deleteTeacher(id));
         }catch (Exception e){
-            return ReponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
 }

@@ -14,13 +14,18 @@ public class Subject {
 
     private String description;
 
+    @ManyToOne
+    @JoinColumn(name = "course_id", nullable = false)
+    private Course course;
+
     public Subject() {
     }
 
-    public Subject(int idSubject, String name, String description) {
+    public Subject(int idSubject, String name, String description, Course course) {
         this.idSubject = idSubject;
         this.name = name;
         this.description = description;
+        this.course = course;
     }
 
     public int getIdSubject() {
@@ -45,5 +50,13 @@ public class Subject {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 }
